@@ -40,4 +40,10 @@ dependencies {
     //Moshi
     implementation ("com.squareup.moshi:moshi-kotlin:1.11.0")
 
+    // LiveData ; ViewModel
+    implementation "android.arch.lifecycle:extensions:2.3.0"
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }
