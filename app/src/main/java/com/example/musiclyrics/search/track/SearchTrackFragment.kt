@@ -1,7 +1,6 @@
 package com.example.musiclyrics.search.track
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
-import com.example.musiclyrics.network.MusicXMatch
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
 class SearchTrackFragment : Fragment() {
 

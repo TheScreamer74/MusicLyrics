@@ -9,6 +9,7 @@
             type="com.example.musiclyrics.search.track.SearchTrackViewModel"/>
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,9 +41,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchText"
-            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
             app:srcCompat="@drawable/ic_poussin" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="360dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:animateLayoutChanges="false"
+            android:background="@drawable/ic_textfielsearch"
+            android:queryBackground="@android:color/transparent"
+            android:radius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
