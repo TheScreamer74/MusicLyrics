@@ -30,8 +30,6 @@ class SearchTrackViewModel : ViewModel() {
 
                 _Tracks.value = result.message.body.track_list
 
-                Log.i("ResultSearchTrack", result.message.body.track_list[0].track.artist_name)
-
             }
             catch(t: Throwable){
 
