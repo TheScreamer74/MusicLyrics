@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/searchText2"
+            android:id="@+id/searchBar"
             style="@style/searchbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,5 +28,71 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/bigCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/ic_bigborder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchBar"
+            />
+
+        <ImageView
+            android:id="@+id/albumImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/album_template"
+            app:layout_constraintBottom_toBottomOf="@+id/bigCircle"
+            app:layout_constraintEnd_toEndOf="@+id/bigCircle"
+            app:layout_constraintStart_toStartOf="@+id/bigCircle"
+            app:layout_constraintTop_toTopOf="@+id/bigCircle" />
+
+        <ImageView
+            android:id="@+id/smallCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_small_border"
+            app:layout_constraintBottom_toBottomOf="@+id/albumImg"
+            app:layout_constraintEnd_toEndOf="@+id/albumImg"
+            app:layout_constraintStart_toStartOf="@+id/albumImg"
+            app:layout_constraintTop_toTopOf="@+id/albumImg" />
+
+        <ImageView
+            android:id="@+id/borderCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/albumImg"
+            app:layout_constraintEnd_toEndOf="@+id/albumImg"
+            app:layout_constraintStart_toStartOf="@+id/albumImg"
+            app:layout_constraintTop_toTopOf="@+id/albumImg" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="My Song Title"
+            android:textColor="#3F3D56"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bigCircle"
+            app:lineHeight="36dp" />
+
+        <TextView
+            android:id="@+id/artistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="My Artist Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
