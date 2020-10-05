@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-<<<<<<< HEAD
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-=======
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -13,15 +8,13 @@
             name="viewModel"
             type="com.example.musiclyrics.search.track.SearchTrackViewModel"/>
     </data>
->>>>>>> main
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF">
 
-<<<<<<< HEAD
-=======
         <EditText
             android:id="@+id/searchText"
             android:layout_width="0dp"
@@ -41,7 +34,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
->>>>>>> main
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"

@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.musiclyrics.network.MusicXMatch
-import com.example.musiclyrics.network.properties.search.Track
 import com.example.musiclyrics.network.properties.search.TrackList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
