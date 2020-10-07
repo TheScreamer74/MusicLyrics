@@ -41,14 +41,11 @@ class SearchTrackViewModel : ViewModel() {
     }
 
     fun Disconnect(it: View): Boolean {
-        var isSignOut = false
         AuthUI.getInstance()
             .signOut(it.context)
-            .addOnCompleteListener {
-                isSignOut = true
-            }
+            .addOnCompleteListener{}
 
-        return isSignOut
+        return true
     }
 
 }
