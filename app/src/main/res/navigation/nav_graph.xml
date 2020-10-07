@@ -13,5 +13,17 @@
     <fragment
         android:id="@+id/searchTrackFragment"
         android:name="com.example.musiclyrics.search.track.SearchTrackFragment"
-        android:label="SearchTrackFragment" />
+        android:label="SearchTrackFragment" >
+        <action
+            android:id="@+id/action_searchTrackFragment_to_resultTrackFragment"
+            app:destination="@id/resultTrackFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultTrackFragment"
+        android:name="com.example.musiclyrics.results.track.ResultTrackFragment"
+        android:label="ResultTrackFragment" >
+        <argument
+            android:name="track"
+            app:argType="com.example.musiclyrics.network.properties.search.Track" />
+    </fragment>
 </navigation>
