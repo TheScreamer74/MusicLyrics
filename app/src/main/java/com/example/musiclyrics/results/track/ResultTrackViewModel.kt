@@ -33,7 +33,7 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
 
     fun LoadAlbumImage(){
         coroutineScope.launch {
-            val getAlbumDeferred = MusicXMatch.retrofitService.getImageAlbum(10266231,API_KEY)
+            val getAlbumDeferred = MusicXMatch.retrofitService.getImageAlbum(Track.value!!.album_id,API_KEY)
             try {
                 val result = getAlbumDeferred.await()
 
