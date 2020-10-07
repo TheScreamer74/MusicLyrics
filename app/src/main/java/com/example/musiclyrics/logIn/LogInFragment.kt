@@ -37,6 +37,8 @@ class LogIn : Fragment() {
             AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
+                .setIsSmartLockEnabled(false)
+                .setLogo(R.drawable.album_template)
                 .build(), RC_SIGN_IN)
 
     }

@@ -60,6 +60,12 @@ class SearchTrackFragment : Fragment() {
             switchOnDetailedTrackFragment(it)
         })
 
+        binding.disconnectButton.setOnClickListener {
+
+            if (viewModel.Disconnect(it))
+                findNavController().navigate(R.id.action_searchTrackFragment_to_logIn)
+        }
+
         return binding.root
     }
 

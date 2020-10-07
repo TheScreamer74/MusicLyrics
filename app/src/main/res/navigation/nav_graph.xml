@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_searchTrackFragment_to_resultTrackFragment"
             app:destination="@id/resultTrackFragment" />
+        <action
+            android:id="@+id/action_searchTrackFragment_to_logIn"
+            app:destination="@id/logIn" />
     </fragment>
     <fragment
         android:id="@+id/resultTrackFragment"
