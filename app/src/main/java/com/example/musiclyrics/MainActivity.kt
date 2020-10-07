@@ -2,7 +2,7 @@ package com.example.musiclyrics
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.musiclyrics.search.track.SearchTrackFragment
+import com.example.musiclyrics.logIn.LogIn
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
