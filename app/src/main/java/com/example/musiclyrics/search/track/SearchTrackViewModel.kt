@@ -6,12 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.musiclyrics.network.MusicXMatch
-<<<<<<< HEAD
 import com.example.musiclyrics.network.properties.search.track.TrackList
-=======
-import com.example.musiclyrics.network.properties.search.TrackList
 import com.firebase.ui.auth.AuthUI
->>>>>>> ft/logIn
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
