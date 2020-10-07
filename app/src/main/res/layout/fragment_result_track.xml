@@ -46,8 +46,8 @@
 
         <ImageView
             android:id="@+id/albumImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="228dp"
+            android:layout_height="228dp"
             android:src="@drawable/album_template"
             app:image="@{viewModel.album.album_coverart_100x100}"
             app:layout_constraintBottom_toBottomOf="@+id/bigCircle"

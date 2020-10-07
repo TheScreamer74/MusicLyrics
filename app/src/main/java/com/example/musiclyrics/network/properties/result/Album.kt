@@ -20,5 +20,5 @@ data class Album (
         val album_copyright: String,
         val album_label: String,
         val updated_time: String,
-        val album_coverart_100x100: String?
+        val album_coverart_100x100: String? = "https://firebasestorage.googleapis.com/v0/b/musiclyrics-56250.appspot.com/o/Ellipse.png?alt=media&token=0072237a-d91f-4805-ab37-4394e2ef22b8"
 ) : Parcelable

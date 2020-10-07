@@ -36,8 +36,8 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
             val getAlbumDeferred = MusicXMatch.retrofitService.getImageAlbum(Track.value!!.album_id,API_KEY)
             try {
                 val result = getAlbumDeferred.await()
-
                 _Album.value = result.message.body.album
+
             } catch (t: Throwable){
                 Log.i("LocationListViewModel", t.message ?: "rien")
             }
