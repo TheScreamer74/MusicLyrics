@@ -1,16 +1,17 @@
 package com.example.musiclyrics.search.track
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.properties.search.TrackList
+import com.firebase.ui.auth.AuthUI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 
 class SearchTrackViewModel : ViewModel() {
 
@@ -37,6 +38,17 @@ class SearchTrackViewModel : ViewModel() {
                 Log.i("LocationListViewModel", t.message ?: "rien")
             }
         }
+    }
+
+    fun Disconnect(it: View): Boolean {
+        var isSignOut = false
+        AuthUI.getInstance()
+            .signOut(it.context)
+            .addOnCompleteListener {
+                isSignOut = true
+            }
+
+        return isSignOut
     }
 
 }

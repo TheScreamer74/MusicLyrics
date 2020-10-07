@@ -2,6 +2,7 @@ package com.example.musiclyrics
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.musiclyrics.logIn.LogIn
 
 class MainActivity : AppCompatActivity() {

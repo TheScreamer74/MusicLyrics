@@ -10,6 +10,7 @@ import android.widget.SimpleCursorAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
 
@@ -59,6 +60,12 @@ class SearchTrackFragment : Fragment() {
 
         binding.trackList.adapter = SearchTrackAdapter()
 
+
+        binding.disconnectButton.setOnClickListener {
+
+            if (viewModel.Disconnect(it))
+                findNavController().navigate(R.id.action_searchTrackFragment_to_logIn)
+        }
 
         return binding.root
     }
