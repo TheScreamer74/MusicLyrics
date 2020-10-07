@@ -1,6 +1,6 @@
 package com.example.musiclyrics.network
 
-import com.example.musiclyrics.network.properties.search.Root
+import com.example.musiclyrics.network.properties.search.track.Root
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -35,11 +35,16 @@ private val retrofit = Retrofit.Builder()
 interface MusicXMatchService {
 
     //https://api.musixmatch.com/ws/1.1/get/track.search?q_track=Sayso&apikey=fb20e5b416b5d8f3bb484102abca1638
- @GET("track.search")
- fun searchAny(@Query ("q_track") queryTrack: String, @Query("apikey") apiKey: String):
+    @GET("track.search")
+    fun searchAny(@Query ("q_track") queryTrack: String, @Query("apikey") apiKey: String):
         Deferred<Root>
-
+    @GET("album.get")
+    fun getImageAlbum(@Query ("album_id") albumId: Long, @Query("apikey") apiKey: String):
+            Deferred<com.example.musiclyrics.network.properties.result.Root>
 }
+
+
+
 
 object MusicXMatch {
     val retrofitService : MusicXMatchService by lazy {

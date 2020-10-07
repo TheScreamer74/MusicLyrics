@@ -2,12 +2,14 @@ package com.example.musiclyrics.search.track
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.SearchEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
 
@@ -54,11 +56,18 @@ class SearchTrackFragment : Fragment() {
 
         }
 
-        binding.trackList.adapter = SearchTrackAdapter()
+        binding.trackList.adapter = SearchTrackAdapter(SearchTrackAdapter.OnClickListener {
+            switchOnDetailedTrackFragment(it)
+        })
 
         return binding.root
     }
 
+
+    fun switchOnDetailedTrackFragment(id: Int) {
+        this.findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToResultTrackFragment(
+            viewModel.Tracks.value!![id].track))
+    }
 
 }
 

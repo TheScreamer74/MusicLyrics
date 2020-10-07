@@ -1,18 +1,7 @@
-package com.example.musiclyrics.network.properties.search
+package com.example.musiclyrics.network.properties.search.track
 
-import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-
-@Parcelize
-data class Body(
-    val track_list: List<TrackList>
-) : Parcelable
-
-@Parcelize
-data class TrackList(
-    val track: Track
-) : Parcelable
 
 @Parcelize
 data class MusicGenre(

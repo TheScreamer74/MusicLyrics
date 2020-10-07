@@ -24,6 +24,6 @@
         android:label="ResultTrackFragment" >
         <argument
             android:name="track"
-            app:argType="com.example.musiclyrics.network.properties.search.Track" />
+            app:argType="com.example.musiclyrics.network.properties.search.track.Track" />
     </fragment>
 </navigation>

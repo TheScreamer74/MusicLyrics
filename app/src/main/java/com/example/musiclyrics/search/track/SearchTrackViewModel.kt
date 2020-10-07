@@ -5,12 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.musiclyrics.network.MusicXMatch
-import com.example.musiclyrics.network.properties.search.TrackList
+import com.example.musiclyrics.network.properties.search.track.TrackList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 
 class SearchTrackViewModel : ViewModel() {
 
@@ -25,9 +24,9 @@ class SearchTrackViewModel : ViewModel() {
 
     fun Search(text: String) {
         coroutineScope.launch {
-            var getCharactersListDeferred = MusicXMatch.retrofitService.searchAny(text, API_KEY)
+            var getTrackListDeferred = MusicXMatch.retrofitService.searchAny(text, API_KEY)
             try {
-                var result = getCharactersListDeferred.await()
+                var result = getTrackListDeferred.await()
 
                 _Tracks.value = result.message.body.track_list
 

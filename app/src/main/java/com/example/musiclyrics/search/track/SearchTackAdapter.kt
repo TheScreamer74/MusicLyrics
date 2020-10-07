@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musiclyrics.databinding.TrackItemBinding
-import com.example.musiclyrics.network.properties.search.TrackList
+import com.example.musiclyrics.network.properties.search.track.TrackList
 
-class SearchTrackAdapter : ListAdapter<TrackList, SearchTrackAdapter.TrackItemViewHolder>(DiffCallback) {
+class SearchTrackAdapter(private val onClickListener: SearchTrackAdapter.OnClickListener) : ListAdapter<TrackList, SearchTrackAdapter.TrackItemViewHolder>(DiffCallback) {
 
     class TrackItemViewHolder(private var binding: TrackItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind (track: TrackList){
@@ -44,11 +44,16 @@ class SearchTrackAdapter : ListAdapter<TrackList, SearchTrackAdapter.TrackItemVi
         return TrackItemViewHolder(TrackItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-    override fun onBindViewHolder(
-        holder: TrackItemViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: TrackItemViewHolder, position: Int) {
         val TrackList = getItem(position)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(position)
+        }
         holder.bind(TrackList)
     }
+
+    class OnClickListener (val clickListener: (tackId: Int) -> Unit) {
+        fun onClick(trackId:Int) = clickListener(trackId)
+    }
+
 }
