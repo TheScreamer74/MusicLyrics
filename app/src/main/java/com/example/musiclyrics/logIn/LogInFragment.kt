@@ -38,6 +38,7 @@ class LogIn : Fragment() {
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
                 .setIsSmartLockEnabled(false)
+                .setLogo(R.drawable.album_template)
                 .build(), RC_SIGN_IN)
 
     }
