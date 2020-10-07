@@ -15,13 +15,28 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="@{@string/format_string_trackList(track.track.track_name, track.track.artist_name)}"
+            android:textAlignment="center"
+            android:textColor="#3F3D56"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- This adds a border between the TextViews -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#E8E8E8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

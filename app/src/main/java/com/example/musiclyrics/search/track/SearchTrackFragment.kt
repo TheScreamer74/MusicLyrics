@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.CursorAdapter
 import android.widget.SimpleCursorAdapter
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
-import kotlinx.android.synthetic.main.fragment_search_track.*
 
 
 class SearchTrackFragment : Fragment() {
@@ -37,17 +35,6 @@ class SearchTrackFragment : Fragment() {
             R.layout.fragment_search_track,
             container,
             false
-        )
-
-        val from = arrayOf("cityName")
-        val to = intArrayOf(android.R.id.text1)
-        mAdapter = SimpleCursorAdapter(
-            activity,
-            android.R.layout.simple_list_item_1,
-            null,
-            from,
-            to,
-            CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
         )
 
 
