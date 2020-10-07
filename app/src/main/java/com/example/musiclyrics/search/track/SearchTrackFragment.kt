@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.CursorAdapter
-import android.widget.SimpleCursorAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,7 +22,6 @@ class SearchTrackFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchTrackBinding
 
-    private lateinit var mAdapter: SimpleCursorAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +55,6 @@ class SearchTrackFragment : Fragment() {
         }
 
         binding.trackList.adapter = SearchTrackAdapter()
-
 
         return binding.root
     }
