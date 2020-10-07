@@ -32,7 +32,7 @@ class LogIn : Fragment() {
             AuthUI.IdpConfig.GoogleBuilder().build(),
             AuthUI.IdpConfig.FacebookBuilder().build())
 
-// Create and launch sign-in intent
+        // Create and launch sign-in intent
         startActivityForResult(
             AuthUI.getInstance()
                 .createSignInIntentBuilder()
