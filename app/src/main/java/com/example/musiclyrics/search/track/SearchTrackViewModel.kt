@@ -29,12 +29,9 @@ class SearchTrackViewModel : ViewModel() {
             var getTrackListDeferred = MusicXMatch.retrofitService.searchAny(text, API_KEY)
             try {
                 var result = getTrackListDeferred.await()
-
                 _Tracks.value = result.message.body.track_list
-
             }
             catch(t: Throwable){
-
                 Log.i("LocationListViewModel", t.message ?: "rien")
             }
         }
