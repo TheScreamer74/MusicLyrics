@@ -43,10 +43,6 @@ class ResultTrackFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        Log.i("URLIMAGEALBUM", viewModel.Track.value!!.track_edit_url)
-
-        viewModel.LoadAlbumImage()
-
         rotateImg()
         return binding.root
 
