@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -46,7 +47,13 @@ class ResultTrackFragment : Fragment() {
 
         viewModel.LoadAlbumImage()
 
+        rotateImg()
         return binding.root
 
+    }
+
+    fun rotateImg() {
+        val rotation = AnimationUtils.loadAnimation(this.activity, R.anim.rotate)
+        binding.albumImg.startAnimation(rotation)
     }
 }
