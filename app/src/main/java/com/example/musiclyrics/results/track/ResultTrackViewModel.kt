@@ -1,9 +1,12 @@
 package com.example.musiclyrics.results.track
 
 import android.util.Log
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.musiclyrics.MainActivity
+import com.example.musiclyrics.R
 import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.properties.result.Album
 import com.example.musiclyrics.network.properties.search.track.Track

@@ -52,8 +52,10 @@
             app:image="@{viewModel.album.album_coverart_100x100}"
             app:layout_constraintBottom_toBottomOf="@+id/bigCircle"
             app:layout_constraintEnd_toEndOf="@+id/bigCircle"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="@+id/bigCircle"
-            app:layout_constraintTop_toTopOf="@+id/bigCircle" />
+            app:layout_constraintTop_toTopOf="@+id/bigCircle"
+            app:layout_constraintVertical_bias="0.478"/>
 
         <ImageView
             android:id="@+id/smallCircle"
