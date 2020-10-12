@@ -32,7 +32,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface MusicXMatchService {
-    //https://api.musixmatch.com/ws/1.1/get/track.search?q_track=<TRACK_NAME>&apikey=fb20e5b416b5d8f3bb484102abca1638
+    //https://api.musixmatch.com/ws/1.1/get/track.search?q_track=<TRACK_NAME>&apikey=<API_KEY>
     @GET("track.search")
     fun searchAny(@Query ("q_track") queryTrack: String, @Query("apikey") apiKey: String):
         Deferred<Root>

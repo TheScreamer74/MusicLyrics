@@ -3,7 +3,6 @@ package com.example.musiclyrics.search.track
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.SearchEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
@@ -52,7 +51,7 @@ class SearchTrackFragment : Fragment() {
         binding.searchView.setOnEditorActionListener { v, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
-                viewModel.Search(binding.searchView.text.toString())
+                viewModel.search(binding.searchView.text.toString())
                 binding.imageView.visibility = View.GONE
                 binding.trackList.visibility = View.VISIBLE
                 v.hideKeyboard()
@@ -69,7 +68,7 @@ class SearchTrackFragment : Fragment() {
 
         binding.disconnectButton.setOnClickListener {
 
-            if (viewModel.Disconnect(it))
+            if (viewModel.disconnect(it))
                 findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToLogIn())
         }
 
@@ -79,7 +78,7 @@ class SearchTrackFragment : Fragment() {
 
     private fun switchOnDetailedTrackFragment(id: Int) {
         this.findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToResultTrackFragment(
-            viewModel.Tracks.value!![id].track))
+            viewModel.tracks.value!![id].track))
     }
 
 }
