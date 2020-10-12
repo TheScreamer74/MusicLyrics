@@ -1,12 +1,13 @@
 package com.example.musiclyrics.search.track
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.SearchEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.CursorAdapter
-import android.widget.SimpleCursorAdapter
+import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,13 +20,16 @@ class SearchTrackFragment : Fragment() {
 
     companion object {
         fun newInstance() = SearchTrackFragment()
+        fun View.hideKeyboard() {
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(windowToken, 0)
+        }
     }
 
     private lateinit var viewModel: SearchTrackViewModel
 
     private lateinit var binding: FragmentSearchTrackBinding
 
-    private lateinit var mAdapter: SimpleCursorAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +55,7 @@ class SearchTrackFragment : Fragment() {
                 viewModel.Search(binding.searchView.text.toString())
                 binding.imageView.visibility = View.GONE
                 binding.trackList.visibility = View.VISIBLE
+                v.hideKeyboard()
                 true
             } else {
                 false
@@ -58,18 +63,24 @@ class SearchTrackFragment : Fragment() {
 
         }
 
-        binding.trackList.adapter = SearchTrackAdapter()
-
+        binding.trackList.adapter = SearchTrackAdapter(SearchTrackAdapter.OnClickListener {
+            switchOnDetailedTrackFragment(it)
+        })
 
         binding.disconnectButton.setOnClickListener {
 
             if (viewModel.Disconnect(it))
-                findNavController().navigate(R.id.action_searchTrackFragment_to_logIn)
+                findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToLogIn())
         }
 
         return binding.root
     }
 
+
+    private fun switchOnDetailedTrackFragment(id: Int) {
+        this.findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToResultTrackFragment(
+            viewModel.Tracks.value!![id].track))
+    }
 
 }
 

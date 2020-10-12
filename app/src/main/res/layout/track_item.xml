@@ -6,7 +6,7 @@
     <data>
         <variable
             name="track"
-            type="com.example.musiclyrics.network.properties.search.TrackList"/>
+            type="com.example.musiclyrics.network.properties.search.track.TrackList"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,97 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.musiclyrics.results.track.ResultTrackViewModel"/>
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/searchBar"
-            style="@style/searchbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_textfielsearch"
-            android:gravity="center"
-            android:hint="Chercher une musique, un album, un artiste"
-            android:inputType="textPersonName"
-            android:textAlignment="gravity"
-            android:textAllCaps="false"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/bigCircle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/ic_bigborder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchBar"
-            />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/albumImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/album_template"
-            app:layout_constraintBottom_toBottomOf="@+id/bigCircle"
-            app:layout_constraintEnd_toEndOf="@+id/bigCircle"
-            app:layout_constraintStart_toStartOf="@+id/bigCircle"
-            app:layout_constraintTop_toTopOf="@+id/bigCircle" />
 
-        <ImageView
-            android:id="@+id/smallCircle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_small_border"
-            app:layout_constraintBottom_toBottomOf="@+id/albumImg"
-            app:layout_constraintEnd_toEndOf="@+id/albumImg"
-            app:layout_constraintStart_toStartOf="@+id/albumImg"
-            app:layout_constraintTop_toTopOf="@+id/albumImg" />
 
-        <ImageView
-            android:id="@+id/borderCircle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_circle"
-            app:layout_constraintBottom_toBottomOf="@+id/albumImg"
-            app:layout_constraintEnd_toEndOf="@+id/albumImg"
-            app:layout_constraintStart_toStartOf="@+id/albumImg"
-            app:layout_constraintTop_toTopOf="@+id/albumImg" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.track.track_name}"
+                    android:textColor="#3F3D56"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/artistName"
+                    app:lineHeight="36dp" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="My Song Title"
-            android:textColor="#3F3D56"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bigCircle"
-            app:lineHeight="36dp" />
+                <ImageView
+                    android:id="@+id/bigCircle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_bigborder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/artistName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="My Artist Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+                <ImageView
+                    android:id="@+id/albumImg"
+                    android:layout_width="228dp"
+                    android:layout_height="228dp"
+                    android:src="@drawable/album_template"
+                    app:image="@{viewModel.album.album_coverart_100x100}"
+                    app:layout_constraintBottom_toBottomOf="@+id/bigCircle"
+                    app:layout_constraintEnd_toEndOf="@+id/bigCircle"
+                    app:layout_constraintStart_toStartOf="@+id/bigCircle"
+                    app:layout_constraintTop_toTopOf="@+id/bigCircle"
+                    />
+
+                <ImageView
+                    android:id="@+id/borderCircle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_circle"
+                    app:layout_constraintBottom_toBottomOf="@+id/albumImg"
+                    app:layout_constraintEnd_toEndOf="@+id/albumImg"
+                    app:layout_constraintStart_toStartOf="@+id/albumImg"
+                    app:layout_constraintTop_toTopOf="@+id/albumImg" />
+
+                <ImageView
+                    android:id="@+id/smallCircle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_small_border"
+                    app:layout_constraintBottom_toBottomOf="@+id/albumImg"
+                    app:layout_constraintEnd_toEndOf="@+id/albumImg"
+                    app:layout_constraintStart_toStartOf="@+id/albumImg"
+                    app:layout_constraintTop_toTopOf="@+id/albumImg" />
+
+                <TextView
+                    android:id="@+id/artistName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.track.artist_name}"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bigCircle" />
+
+                <TextView
+                    android:id="@+id/lyricsTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@{viewModel.lyrics.lyrics_body}"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</layout>
