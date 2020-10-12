@@ -10,9 +10,6 @@ import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.properties.lyrics.Lyrics
 import com.example.musiclyrics.network.properties.result.Album
 import com.example.musiclyrics.network.properties.search.track.Track
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ResultTrackViewModel(track: Track) : ViewModel() {
