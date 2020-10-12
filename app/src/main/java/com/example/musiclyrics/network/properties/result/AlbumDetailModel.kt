@@ -1,6 +1,7 @@
 package com.example.musiclyrics.network.properties.result
 
 import android.os.Parcelable
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 data class Root(
@@ -18,7 +19,7 @@ data class Body(
 ) : Parcelable
 
 data class Header(
-    val status_code: Long,
-    val execute_time: Double
+    @Json(name = "status_code") val statusCode: Long,
+    @Json(name = "execute_time") val executeTime: Double
 )
 

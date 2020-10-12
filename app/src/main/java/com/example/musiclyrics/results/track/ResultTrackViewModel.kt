@@ -1,13 +1,10 @@
 package com.example.musiclyrics.results.track
 
 import android.util.Log
-import android.view.animation.AnimationUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.musiclyrics.API_KEY
-import com.example.musiclyrics.MainActivity
-import com.example.musiclyrics.R
 import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.properties.lyrics.Lyrics
 import com.example.musiclyrics.network.properties.result.Album
@@ -59,8 +56,8 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
             val getLyricsDeferred = MusicXMatch.retrofitService.getLyrics(Track.value!!.track_id, API_KEY)
             try {
                 val result = getLyricsDeferred.await()
-                if (result.message.body.lyrics.lyrics_body == "") {
-                    result.message.body.lyrics.lyrics_body = "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson"
+                if (result.message.body.lyrics.lyricsBody == "") {
+                    result.message.body.lyrics.lyricsBody = "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson"
                 }
                 _Lyrics.value = result.message.body.lyrics
             }

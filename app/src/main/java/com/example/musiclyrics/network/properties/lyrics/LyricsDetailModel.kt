@@ -1,5 +1,7 @@
 package com.example.musiclyrics.network.properties.lyrics
 
+import com.squareup.moshi.Json
+
 
 data class Root(
     val message: Message
@@ -11,8 +13,8 @@ data class Message(
 )
 
 data class Header(
-    val status_code: Long,
-    val execute_time: Double
+    @Json(name = "status_code") val status_code: Long,
+    @Json(name = "execute_time") val execute_time: Double
 )
 
 data class Body(
@@ -20,11 +22,11 @@ data class Body(
 )
 
 data class Lyrics(
-    val lyrics_id: Long,
+    @Json(name = "lyrics_id") val lyricsId: Long,
     val explicit: Long,
-    var lyrics_body: String,
-    val script_tracking_url: String,
-    val pixel_tracking_url: String,
-    val lyrics_copyright: String,
-    val updated_time: String
+    @Json(name = "lyrics_body") var lyricsBody: String,
+    @Json(name = "script_tracking_url") val scriptTrackingUrl: String,
+    @Json(name = "pixel_tracking_url") val pixelTrackingUrl: String,
+    @Json(name = "lyrics_copyright") val lyricsCopyright: String,
+    @Json(name = "updated_time") val updatedTime: String
 )
