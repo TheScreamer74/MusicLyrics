@@ -1,9 +1,10 @@
 package com.example.musiclyrics.network.properties.search.track
 
 import android.os.Parcelable
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PrimaryGenres(
-    val music_genre_list: List<MusicGenreList>
+    @Json(name = "music_genre_list") val musicGenreList: List<MusicGenreList>
 ) : Parcelable

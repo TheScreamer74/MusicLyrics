@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@{@string/format_string_trackList(track.track.track_name, track.track.artist_name)}"
+            android:text="@{@string/format_string_trackList(track.track.trackName, track.track.artistName)}"
             android:textAlignment="center"
             android:textColor="#3F3D56"
             android:textSize="16sp"
