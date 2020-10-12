@@ -31,7 +31,7 @@ class SearchTrackAdapter(private val onClickListener: SearchTrackAdapter.OnClick
             oldItem: TrackList,
             newItem: TrackList
         ): Boolean {
-            return oldItem.track.track_id == newItem.track.track_id
+            return oldItem.track.trackId == newItem.track.trackId
         }
 
     }

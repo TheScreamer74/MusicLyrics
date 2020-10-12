@@ -1,13 +1,11 @@
 package com.example.musiclyrics.results.track
 
 import android.util.Log
-import android.view.animation.AnimationUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.musiclyrics.API_KEY
-import com.example.musiclyrics.MainActivity
-import com.example.musiclyrics.R
 import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.properties.lyrics.Lyrics
 import com.example.musiclyrics.network.properties.result.Album
@@ -19,34 +17,31 @@ import kotlinx.coroutines.launch
 
 class ResultTrackViewModel(track: Track) : ViewModel() {
 
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val _track = MutableLiveData<Track>()
+    val track : LiveData<Track>
+        get() = _track
 
-    private val _Track = MutableLiveData<Track>()
-    val Track : LiveData<Track>
-        get() = _Track
+    private val _album = MutableLiveData<Album>()
+    val album : LiveData<Album>
+        get() = _album
 
-    private val _Album = MutableLiveData<Album>()
-    val Album : LiveData<Album>
-        get() = _Album
-
-    private val _Lyrics = MutableLiveData<Lyrics>()
-    val Lyrics : LiveData<Lyrics>
-        get() = _Lyrics
+    private val _lyrics = MutableLiveData<Lyrics>()
+    val lyrics : LiveData<Lyrics>
+        get() = _lyrics
 
     init {
-        _Track.value = track
-        LoadAlbumImage()
-        LoadLyrics()
+        _track.value = track
+        loadAlbumImage()
+        loadLyrics()
     }
 
-    fun LoadAlbumImage(){
-        coroutineScope.launch {
-            val getAlbumDeferred = MusicXMatch.retrofitService.getImageAlbum(Track.value!!.album_id,
+    private fun loadAlbumImage(){
+        viewModelScope.launch {
+            val getAlbumDeferred = MusicXMatch.retrofitService.getImageAlbum(track.value!!.albumId,
                 API_KEY)
             try {
                 val result = getAlbumDeferred.await()
-                _Album.value = result.message.body.album
+                _album.value = result.message.body.album
 
             } catch (t: Throwable){
                 Log.i("LocationListViewModel", t.message ?: "rien")
@@ -54,15 +49,15 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
         }
     }
 
-    fun LoadLyrics(){
-        coroutineScope.launch {
-            val getLyricsDeferred = MusicXMatch.retrofitService.getLyrics(Track.value!!.track_id, API_KEY)
+    private fun loadLyrics(){
+        viewModelScope.launch {
+            val getLyricsDeferred = MusicXMatch.retrofitService.getLyrics(track.value!!.trackId, API_KEY)
             try {
                 val result = getLyricsDeferred.await()
-                if (result.message.body.lyrics.lyrics_body == "") {
-                    result.message.body.lyrics.lyrics_body = "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson"
+                if (result.message.body.lyrics.lyricsBody == "") {
+                    result.message.body.lyrics.lyricsBody = "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson"
                 }
-                _Lyrics.value = result.message.body.lyrics
+                _lyrics.value = result.message.body.lyrics
             }
             catch (t: Throwable){
                 Log.i("LocationListViewModel", t.message ?: "rien")
