@@ -77,7 +77,7 @@ class SearchTrackFragment : Fragment() {
     }
 
 
-    fun switchOnDetailedTrackFragment(id: Int) {
+    private fun switchOnDetailedTrackFragment(id: Int) {
         this.findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToResultTrackFragment(
             viewModel.Tracks.value!![id].track))
     }

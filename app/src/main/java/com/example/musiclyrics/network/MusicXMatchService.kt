@@ -1,5 +1,6 @@
 package com.example.musiclyrics.network
 
+import com.example.musiclyrics.BASE_URL_MUSICXMATCH
 import com.example.musiclyrics.network.properties.search.track.Root
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -11,7 +12,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = "https://api.musixmatch.com/ws/1.1/"
 
 private val httpLogger: HttpLoggingInterceptor = HttpLoggingInterceptor()
     .setLevel(HttpLoggingInterceptor.Level.HEADERS)
@@ -27,7 +27,7 @@ private val moshi = Moshi.Builder()
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .baseUrl(BASE_URL)
+    .baseUrl(BASE_URL_MUSICXMATCH)
     .client(httpClient.build())
     .build()
 
