@@ -3,11 +3,13 @@ package com.example.musiclyrics.network.properties.result
 import android.os.Parcelable
 import com.example.musiclyrics.network.properties.search.track.PrimaryGenres
 import kotlinx.android.parcel.Parcelize
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.Json
 
 @Parcelize
 data class Album (
         val album_id: Long,
-        val album_mbid: String,
+        @Json(name = "album_mbid") val albumMbid: String,
         val album_name: String,
         val album_rating: Long,
         val album_track_count: Long?,
