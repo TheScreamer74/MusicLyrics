@@ -86,5 +86,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.6.0'
     implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
 
+    //ACRCLoud
+    implementation files('/Users/lpiem/Documents/Android/MusicLyrics/app/libs/acrcloud-universal-sdk-1.2.31.jar')
+
 
 }

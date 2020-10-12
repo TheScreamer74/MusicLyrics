@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "735607876840-h7s5b42e492b5vpnlmjjim641l55ge82.apps.googleusercontent.com",
+          "client_id": "735607876840-7148fej2qjfmuhhc6b3ciivcciqb3se5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.musiclyrics",
-            "certificate_hash": "945901828dd1b298ddd1368fc9ad77ee5b09c7c7"
+            "certificate_hash": "69d2e847588c0c465de7aad01075ebad3b1fd94d"
           }
         },
         {
