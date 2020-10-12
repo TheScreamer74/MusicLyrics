@@ -56,8 +56,8 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
             val getLyricsDeferred = MusicXMatch.retrofitService.getLyrics(Track.value!!.trackId, API_KEY)
             try {
                 val result = getLyricsDeferred.await()
-                if (result.message.body.lyrics.lyrics_body == "") {
-                    result.message.body.lyrics.lyrics_body = "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson"
+                if (result.message.body.lyrics.lyricsBody == "") {
+                    result.message.body.lyrics.lyricsBody = "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson"
                 }
                 _Lyrics.value = result.message.body.lyrics
             }
