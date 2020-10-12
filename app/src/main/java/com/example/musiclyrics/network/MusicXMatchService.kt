@@ -14,7 +14,7 @@ import retrofit2.http.*
 
 
 private val httpLogger: HttpLoggingInterceptor = HttpLoggingInterceptor()
-    .setLevel(HttpLoggingInterceptor.Level.HEADERS)
+    .setLevel(HttpLoggingInterceptor.Level.BODY)
 
 private val httpClient: OkHttpClient.Builder = OkHttpClient.Builder()
     .addInterceptor(httpLogger)

@@ -72,6 +72,11 @@ class SearchTrackFragment : Fragment() {
                 findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToLogIn())
         }
 
+        binding.searchButton.setOnClickListener {
+            viewModel.startRecognition()
+        }
+
+
         return binding.root
     }
 

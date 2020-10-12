@@ -3,42 +3,24 @@ package com.example.musiclyrics
 import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.acrcloud.rec.ACRCloudClient
 import com.acrcloud.rec.ACRCloudConfig
-import com.acrcloud.rec.ACRCloudResult
-import com.acrcloud.rec.IACRCloudListener
 import com.acrcloud.rec.utils.ACRCloudLogger
-import com.example.musiclyrics.logIn.LogIn
-import com.facebook.internal.Validate.hasPermission
-import org.json.JSONException
-import org.json.JSONObject
+import com.example.musiclyrics.network.ACRCloudService
 
-class MainActivity : AppCompatActivity(), IACRCloudListener {
+
+class MainActivity : AppCompatActivity(), ACRCloudService {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         checkPermission()
-        initAcrcloud()
-        startRecognition()
+        initAcrCloud()
     }
 
-    private fun checkPermission() {
-        if (ContextCompat.checkSelfPermission(
-                applicationContext,
-                Manifest.permission.RECORD_AUDIO
-            ) != 0
-        ) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), 100)
-        }
-    }
-
-    private var mClient: ACRCloudClient? = null
-
-    fun initAcrcloud() {
+    private fun initAcrCloud() {
         val config = ACRCloudConfig()
 
         config.acrcloudListener = this
@@ -60,57 +42,14 @@ class MainActivity : AppCompatActivity(), IACRCloudListener {
         mClient!!.initWithConfig(config)
     }
 
-    fun startRecognition() {
-        mClient?.let {
-            if (it.startRecognize()) {
-                print("Recognizing...")
-            } else {
-                print("Init error")
-            }
-        } ?: run {
-            print("Client not ready")
+    private fun checkPermission() {
+        if (ContextCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.RECORD_AUDIO
+            ) != 0
+        ) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), 100)
         }
-    }
-
-    override fun onResult(acrResult: ACRCloudResult?) {
-        acrResult?.let {
-            Log.d("ACR", "acr cloud result received: ${it.result}")
-            handleResult(it.result)
-        }
-    }
-
-    override fun onVolumeChanged(vol: Double) {
-        Log.d("ACR", "volume changed $vol")
-    }
-
-    fun handleResult(acrResult: String) {
-        var res = ""
-        try {
-            val json = JSONObject(acrResult)
-            val status: JSONObject = json.getJSONObject("status")
-            val code = status.getInt("code")
-            if (code == 0) {
-                val metadata: JSONObject = json.getJSONObject("metadata")
-                if (metadata.has("music")) {
-                    val musics = metadata.getJSONArray("music")
-                    val tt = musics[0] as JSONObject
-                    val title = tt.getString("title")
-                    val artistt = tt.getJSONArray("artists")
-                    val art = artistt[0] as JSONObject
-                    val artist = art.getString("name")
-
-                    res = "$title ($artist)"
-                }
-            } else {
-                // TODO: Handle error
-                res = acrResult
-            }
-        } catch (e: JSONException) {
-            res = "Error parsing metadata"
-            Log.e("ACR", "JSONException", e)
-        }
-
-        print(res)
     }
 
     override fun onDestroy() {
