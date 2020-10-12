@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.musiclyrics.API_KEY
 import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.properties.search.track.TrackList
 import com.firebase.ui.auth.AuthUI
@@ -14,8 +15,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class SearchTrackViewModel : ViewModel() {
-
-    val API_KEY = "fb20e5b416b5d8f3bb484102abca1638"
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)

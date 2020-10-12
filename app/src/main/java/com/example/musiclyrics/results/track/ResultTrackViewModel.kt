@@ -5,6 +5,7 @@ import android.view.animation.AnimationUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.musiclyrics.API_KEY
 import com.example.musiclyrics.MainActivity
 import com.example.musiclyrics.R
 import com.example.musiclyrics.network.MusicXMatch
@@ -17,8 +18,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ResultTrackViewModel(track: Track) : ViewModel() {
-
-    val API_KEY = "fb20e5b416b5d8f3bb484102abca1638"
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -43,7 +42,8 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
 
     fun LoadAlbumImage(){
         coroutineScope.launch {
-            val getAlbumDeferred = MusicXMatch.retrofitService.getImageAlbum(Track.value!!.album_id,API_KEY)
+            val getAlbumDeferred = MusicXMatch.retrofitService.getImageAlbum(Track.value!!.album_id,
+                API_KEY)
             try {
                 val result = getAlbumDeferred.await()
                 _Album.value = result.message.body.album
