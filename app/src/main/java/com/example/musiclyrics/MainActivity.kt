@@ -1,10 +1,9 @@
 package com.example.musiclyrics
 
 import android.Manifest
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.acrcloud.rec.ACRCloudClient
@@ -12,18 +11,17 @@ import com.acrcloud.rec.ACRCloudConfig
 import com.acrcloud.rec.ACRCloudResult
 import com.acrcloud.rec.IACRCloudListener
 import com.acrcloud.rec.utils.ACRCloudLogger
-import com.example.musiclyrics.logIn.LogIn
-import com.facebook.internal.Validate.hasPermission
+import com.google.firebase.auth.FirebaseAuth
 import org.json.JSONException
 import org.json.JSONObject
 
+
 class MainActivity : AppCompatActivity(), IACRCloudListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         checkPermission()
-        initAcrcloud()
-        startRecognition()
     }
 
     private fun checkPermission() {
@@ -35,7 +33,6 @@ class MainActivity : AppCompatActivity(), IACRCloudListener {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), 100)
         }
     }
-
     private var mClient: ACRCloudClient? = null
 
     fun initAcrcloud() {
