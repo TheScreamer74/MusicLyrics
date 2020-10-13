@@ -13,6 +13,7 @@ import com.acrcloud.rec.utils.ACRCloudLogger
 import com.example.musiclyrics.API_KEY
 import com.example.musiclyrics.BuildConfig
 import com.example.musiclyrics.network.MusicXMatch
+import com.example.musiclyrics.network.MusicXMatchListener
 import com.example.musiclyrics.network.properties.search.track.Track
 import com.example.musiclyrics.network.properties.search.track.TrackList
 import com.firebase.ui.auth.AuthUI
@@ -28,6 +29,8 @@ import org.json.JSONObject
 class SearchTrackViewModel(application: Application) : AndroidViewModel(application) {
 
     private var mClient: ACRCloudClient = ACRCloudClient()
+
+    lateinit var callback: MusicXMatchListener
 
     private val _track = MutableLiveData<Track>()
     val track: LiveData<Track>
@@ -59,6 +62,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
                 var result = withContext(Dispatchers.IO) { getTrackDeferred.await() }
                 _track.value =
                     withContext(Dispatchers.Default) { result.message.body.track }
+                callback.onEventCompleted()
             } catch (t: Throwable) {
                 Log.i("LocationListViewModel", t.message ?: "rien")
             }

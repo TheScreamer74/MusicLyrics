@@ -19,9 +19,10 @@ import com.acrcloud.rec.ACRCloudResult
 import com.acrcloud.rec.IACRCloudListener
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
+import com.example.musiclyrics.network.MusicXMatchListener
 
 
-class SearchTrackFragment : Fragment(), IACRCloudListener {
+class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
 
     companion object {
         fun newInstance() = SearchTrackFragment()
@@ -56,6 +57,8 @@ class SearchTrackFragment : Fragment(), IACRCloudListener {
         checkPermission()
 
         viewModel = ViewModelProvider(this).get(SearchTrackViewModel::class.java)
+
+        viewModel.callback = this
 
         binding.lifecycleOwner = this
 
@@ -117,12 +120,18 @@ class SearchTrackFragment : Fragment(), IACRCloudListener {
 
     override fun onResult(p0: ACRCloudResult?) {
         viewModel.handleResult(p0!!.result)
-        Log.d(TAG, "onResult() called with: p0 = $p0")
-        Log.d(TAG, "onResult() called with: p0 = ${viewModel.track.value}")
     }
 
     override fun onVolumeChanged(p0: Double) {
         Log.d(TAG, "onVolumeChanged() called with: p0 = $p0")
+    }
+
+    override fun onEventCompleted() {
+        findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToResultTrackFragment(viewModel.track.value!!))
+    }
+
+    override fun onEventFailed() {
+        Log.i("MusicXMactch", "Retrieve failed")
     }
 
 
