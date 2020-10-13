@@ -36,12 +36,18 @@ interface MusicXMatchService {
     @GET("track.search")
     fun searchAny(@Query ("q_track") queryTrack: String, @Query("apikey") apiKey: String):
         Deferred<Root>
+
+    @GET("track.get")
+    fun getTrack(@Query ("track_isrc") isrcTrack: String, @Query("apikey") apiKey: String):
+            Deferred<com.example.musiclyrics.network.properties.get.Root>
+
     @GET("album.get")
     fun getImageAlbum(@Query ("album_id") albumId: Long, @Query("apikey") apiKey: String):
             Deferred<com.example.musiclyrics.network.properties.result.Root>
     @GET("track.lyrics.get")
     fun getLyrics(@Query ("track_id") trackId: Long, @Query("apikey") apiKey: String):
             Deferred<com.example.musiclyrics.network.properties.lyrics.Root>
+
 }
 
 
