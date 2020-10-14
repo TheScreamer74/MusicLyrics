@@ -90,5 +90,8 @@ dependencies {
     //ACRCLoud
     implementation files('libs/acrcloud-universal-sdk-1.2.31.jar')
 
+    //JWT token
+    implementation 'io.jsonwebtoken:jjwt:0.7.0'
+
 
 }
