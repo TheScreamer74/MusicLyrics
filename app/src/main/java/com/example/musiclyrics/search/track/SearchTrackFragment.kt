@@ -146,5 +146,10 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         myToastError.show()
         Log.i("MusicXMactch", "Retrieve failed")
     }
+
+    override fun onResume() {
+        super.onResume()
+        binding.searchView.text?.clear()
+    }
 }
 
