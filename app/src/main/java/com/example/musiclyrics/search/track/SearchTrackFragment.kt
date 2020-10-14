@@ -4,11 +4,13 @@ import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -20,6 +22,7 @@ import com.acrcloud.rec.IACRCloudListener
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
 import com.example.musiclyrics.network.MusicXMatchListener
+import java.nio.channels.GatheringByteChannel
 
 
 class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
@@ -131,6 +134,8 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
     }
 
     override fun onEventFailed() {
+        val myToastError = Toast.makeText(this.requireContext(), "Désolé nous n'avons pas pu reconnaître votre morceau :(", Toast.LENGTH_SHORT)
+        myToastError.show()
         Log.i("MusicXMactch", "Retrieve failed")
     }
 

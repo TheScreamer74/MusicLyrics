@@ -30,7 +30,12 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
     init {
         _track.value = track
         loadAlbumImage()
-        loadLyrics()
+        if (track.hasLyrics != 0.toLong()){
+            loadLyrics()
+        }
+        else {
+            _lyrics.value = Lyrics(0, 0, "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson", "", "", "", "")
+        }
     }
 
     private fun loadAlbumImage(){
@@ -52,7 +57,7 @@ class ResultTrackViewModel(track: Track) : ViewModel() {
             val getLyricsDeferred = MusicXMatch.retrofitService.getLyrics(track.value!!.trackId, API_KEY)
             try {
                 val result = getLyricsDeferred.await()
-                if (result.message.body.lyrics.lyricsBody == "") {
+                if (result.message.body.lyrics.lyricsBody.isBlank()) {
                     result.message.body.lyrics.lyricsBody = "Oops il semblerait qu'il n'y ait pas de paroles pour cette chanson"
                 }
                 _lyrics.value = result.message.body.lyrics

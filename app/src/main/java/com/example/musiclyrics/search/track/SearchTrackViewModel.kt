@@ -64,6 +64,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
                     withContext(Dispatchers.Default) { result.message.body.track }
                 callback.onEventCompleted()
             } catch (t: Throwable) {
+                callback.onEventFailed()
                 Log.i("LocationListViewModel", t.message ?: "rien")
             }
         }
@@ -115,8 +116,8 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
                         }
                     }
                 } else {
-                    // TODO: Handle error
-                    res = acrResult
+                    callback.onEventFailed()
+                    return
                 }
             } catch (e: JSONException) {
                 res = "Error parsing metadata"
