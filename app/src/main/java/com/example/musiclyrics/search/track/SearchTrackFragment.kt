@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,6 @@ import com.acrcloud.rec.IACRCloudListener
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
 import com.example.musiclyrics.network.MusicXMatchListener
-import java.nio.channels.GatheringByteChannel
 
 
 class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
@@ -91,7 +89,6 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
             } else {
                 false
             }
-
         }
 
         binding.trackList.adapter = SearchTrackAdapter(SearchTrackAdapter.OnClickListener {
@@ -99,14 +96,12 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         })
 
         binding.disconnectButton.setOnClickListener {
-
             if (viewModel.disconnect(it))
                 findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToLogIn())
         }
 
         binding.searchButton.setOnClickListener {
             viewModel.startRecognition(this)
-
         }
 
         return binding.root
@@ -151,7 +146,5 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         myToastError.show()
         Log.i("MusicXMactch", "Retrieve failed")
     }
-
-
 }
 

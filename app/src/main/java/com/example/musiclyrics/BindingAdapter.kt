@@ -1,9 +1,6 @@
 package com.example.musiclyrics
 
-import android.app.Activity
-import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import android.widget.ViewAnimator
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musiclyrics.network.properties.search.track.TrackList
