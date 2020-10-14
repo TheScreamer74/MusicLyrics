@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -73,6 +74,7 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
                 binding.trackList.visibility = View.VISIBLE
                 binding.searchButton.visibility = View.GONE
                 binding.disconnectButton.visibility = View.GONE
+                binding.loaderBar.visibility = View.INVISIBLE
             }
 
         }
@@ -101,6 +103,8 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         }
 
         binding.searchButton.setOnClickListener {
+            it.visibility = View.INVISIBLE
+            it.isEnabled = false
             viewModel.startRecognition(this)
         }
 
@@ -138,11 +142,15 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
     }
 
     override fun onEventCompleted() {
+        binding.searchButton.visibility = View.VISIBLE
+        binding.searchButton.isEnabled = true
         findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToResultTrackFragment(viewModel.track.value!!))
     }
 
     override fun onEventFailed() {
-        val myToastError = Toast.makeText(this.requireContext(), "Désolé nous n'avons pas pu reconnaître votre morceau :(", Toast.LENGTH_SHORT)
+        binding.searchButton.visibility = View.VISIBLE
+        binding.searchButton.isEnabled = true
+        val myToastError = Toast.makeText(this.requireContext(), "Désolé nous n'avons pas pu reconnaître votre morceau 🙁", Toast.LENGTH_SHORT)
         myToastError.show()
         Log.i("MusicXMactch", "Retrieve failed")
     }
