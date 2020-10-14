@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.musiclyrics.databinding.TrackItemBinding
 import com.example.musiclyrics.network.properties.search.track.TrackList
 
-class SearchTrackAdapter(private val onClickListener: SearchTrackAdapter.OnClickListener) : ListAdapter<TrackList, SearchTrackAdapter.TrackItemViewHolder>(DiffCallback) {
+class SearchTrackAdapter(private val onClickListener: OnClickListener) : ListAdapter<TrackList, SearchTrackAdapter.TrackItemViewHolder>(DiffCallback) {
 
     class TrackItemViewHolder(private var binding: TrackItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind (track: TrackList){

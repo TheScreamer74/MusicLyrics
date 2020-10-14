@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -88,7 +89,6 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
             } else {
                 false
             }
-
         }
 
         binding.trackList.adapter = SearchTrackAdapter(SearchTrackAdapter.OnClickListener {
@@ -96,14 +96,12 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         })
 
         binding.disconnectButton.setOnClickListener {
-
             if (viewModel.disconnect(it))
                 findNavController().navigate(SearchTrackFragmentDirections.actionSearchTrackFragmentToLogIn())
         }
 
         binding.searchButton.setOnClickListener {
             viewModel.startRecognition(this)
-
         }
 
         return binding.root
@@ -144,9 +142,9 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
     }
 
     override fun onEventFailed() {
+        val myToastError = Toast.makeText(this.requireContext(), "Désolé nous n'avons pas pu reconnaître votre morceau :(", Toast.LENGTH_SHORT)
+        myToastError.show()
         Log.i("MusicXMactch", "Retrieve failed")
     }
-
-
 }
 

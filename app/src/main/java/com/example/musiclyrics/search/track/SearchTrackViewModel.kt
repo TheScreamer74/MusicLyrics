@@ -7,21 +7,16 @@ import android.view.View
 import androidx.lifecycle.*
 import com.acrcloud.rec.ACRCloudClient
 import com.acrcloud.rec.ACRCloudConfig
-import com.acrcloud.rec.ACRCloudResult
 import com.acrcloud.rec.IACRCloudListener
-import com.acrcloud.rec.utils.ACRCloudLogger
 import com.example.musiclyrics.API_KEY
-import com.example.musiclyrics.BuildConfig
 import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.MusicXMatchListener
 import com.example.musiclyrics.network.properties.search.track.Track
 import com.example.musiclyrics.network.properties.search.track.TrackList
 import com.firebase.ui.auth.AuthUI
-
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -64,6 +59,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
                     withContext(Dispatchers.Default) { result.message.body.track }
                 callback.onEventCompleted()
             } catch (t: Throwable) {
+                callback.onEventFailed()
                 Log.i("LocationListViewModel", t.message ?: "rien")
             }
         }
@@ -115,8 +111,8 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
                         }
                     }
                 } else {
-                    // TODO: Handle error
-                    res = acrResult
+                    callback.onEventFailed()
+                    return
                 }
             } catch (e: JSONException) {
                 res = "Error parsing metadata"
