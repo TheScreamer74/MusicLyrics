@@ -12,6 +12,7 @@
     //SearchView
     <string name="disconnect_button">Déconnexion</string>
     <string name="search_button">Rechercher</string>
+    <string name="search_bar">Morceaux, artistes, albums, etc.</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
