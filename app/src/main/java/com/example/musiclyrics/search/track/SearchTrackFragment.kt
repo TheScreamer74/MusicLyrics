@@ -67,12 +67,25 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
 
         binding.viewModel = viewModel
 
+        binding.trackList.visibility = View.GONE
+
+        binding.searchView.setOnFocusChangeListener { v, hasFocus ->
+            if(v == binding.searchView && hasFocus ) {
+                binding.imageView.visibility = View.GONE
+                binding.trackList.visibility = View.VISIBLE
+                binding.searchButton.visibility = View.GONE
+                binding.disconnectButton.visibility = View.GONE
+            }
+
+        }
         binding.searchView.setOnEditorActionListener { v, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_SEARCH){
                 viewModel.search(binding.searchView.text.toString())
                 binding.imageView.visibility = View.GONE
                 binding.trackList.visibility = View.VISIBLE
+                binding.searchButton.visibility = View.GONE
+                binding.disconnectButton.visibility = View.GONE
                 v.hideKeyboard()
                 true
             } else {
