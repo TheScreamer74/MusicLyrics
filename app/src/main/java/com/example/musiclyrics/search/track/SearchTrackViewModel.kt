@@ -36,6 +36,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
         get() = _tracks
 
 
+    //get a track from musicxmatch using any keyword
     fun search(text: String) {
         viewModelScope.launch {
             var getTrackListDeferred = MusicXMatch.retrofitService.searchAny(text, API_KEY)
@@ -50,6 +51,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
     }
 
 
+    //get a track from musicxmatch using isrc code
     fun getTrack(isrc: String){
         viewModelScope.launch {
             var getTrackDeferred = MusicXMatch.retrofitService.getTrack(isrc, API_KEY)
@@ -74,6 +76,8 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
     }
 
 
+    //Begin the recognition of the music
+
     fun startRecognition(searchTrackFragment: IACRCloudListener) {
         mClient.apply {
             this.initWithConfig(ACRCloudConfig().apply{
@@ -94,6 +98,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
+    //When the recognition is successful retrieve information to perform a research
     fun handleResult(acrResult: String){
             var res = ""
             try {
