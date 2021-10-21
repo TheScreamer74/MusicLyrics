@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/MusicLyrics/app/src/main/res/layout/activity_main.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/MusicLyrics/app/src/main/res/layout/fragment_log_in.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/MusicLyrics/app/src/main/res/layout/fragment_result_track.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/MusicLyrics/app/src/main/res/layout/fragment_search_track.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/MusicLyrics/app/src/main/res/layout/track_item.xml" value="0.19114583333333332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

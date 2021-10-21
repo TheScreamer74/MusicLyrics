@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.musiclyrics.search.track.SearchTrackViewModel"/>
+            type="com.example.musiclyrics.presentation.search.track.SearchTrackViewModel"/>
     </data>
 
 
@@ -39,61 +39,72 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            app:layout_constraintTop_toBottomOf="@+id/filledTextField"
             app:listDataTrack="@{viewModel.tracks}" />
 
-        <EditText
-            android:id="@+id/searchView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/ic_textfielsearch"
-            android:ems="10"
-            android:hint="Chercher une musique, un album, un artiste..."
-            android:imeOptions="actionSearch"
-            android:inputType="textPersonName"
-            android:paddingLeft="40dp"
-            android:paddingRight="12dp"
-            android:queryBackground="@android:color/transparent"
-            android:radius="20dp"
-            android:textSize="12sp"
+        <ProgressBar
+            android:id="@+id/loaderBar"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_button"
+            app:layout_constraintEnd_toEndOf="@+id/search_button"
+            app:layout_constraintStart_toStartOf="@+id/search_button"
+            app:layout_constraintTop_toTopOf="@+id/search_button"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/colorPrimary"
+            android:layout_gravity="center"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="350dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/search_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconContentDescription="@string/search_bar"
+            app:startIconDrawable="@drawable/ic_searchicon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"
+                android:inputType="textPersonName"
+                android:textColor="@color/textColorSecondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/disconnectButton"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="128dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="24dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_marginBottom="24dp"
-            android:text="@string/disconnect_button"
+            app:icon="@drawable/ic_log_out"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/search_button"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="143dp"
-            android:layout_height="41dp"
+            android:layout_height="60dp"
             android:layout_marginTop="24dp"
             android:text="@string/search_button"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/searchView"
-            app:layout_constraintStart_toStartOf="@+id/searchView"
-            app:layout_constraintTop_toTopOf="@+id/searchView"
-            app:srcCompat="@drawable/ic_searchicon" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
