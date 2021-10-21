@@ -2,15 +2,19 @@ package com.example.musiclyrics.presentation.login
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 
 class LogIn : AbstractAuthFragment() {
 
-    val RC_SIGN_IN = 120
-
-    override fun onStart() {
-        super.onStart()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Check if user is signed in (non-null) and update UI accordingly.
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
@@ -22,8 +26,6 @@ class LogIn : AbstractAuthFragment() {
             Log.i("User is not connected", "Go to connect")
             createSignInIntent()
         }
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 }
