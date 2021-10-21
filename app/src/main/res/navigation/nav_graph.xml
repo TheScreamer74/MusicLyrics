@@ -4,7 +4,7 @@
     app:startDestination="@id/logIn">
     <fragment
         android:id="@+id/logIn"
-        android:name="com.example.musiclyrics.logIn.LogIn"
+        android:name="com.example.musiclyrics.presentation.login.LogIn"
         android:label="LogIn" >
         <action
             android:id="@+id/action_logIn_to_searchTrackFragment"

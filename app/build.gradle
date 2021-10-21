@@ -80,7 +80,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$http3logger_version"
 
     //Facebook
-    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    //implementation 'com.facebook.android:facebook-login:[8.1)'
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+
 
     //Firebase
     implementation 'com.google.firebase:firebase-analytics:19.0.2'
