@@ -2,6 +2,7 @@ package com.example.musiclyrics.presentation.search.track
 
 import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -43,7 +44,6 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
 
     private lateinit var binding: FragmentSearchTrackBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,8 +55,7 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
             false
         )
 
-
-        checkPermission()
+        checkPermissions()
 
         viewModel = ViewModelProvider(this).get(SearchTrackViewModel::class.java)
 
@@ -117,19 +116,20 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
             viewModel.tracks.value!![id].track))
     }
 
-    private fun checkPermission() {
-        if (ContextCompat.checkSelfPermission(this.requireContext(), Manifest.permission.RECORD_AUDIO) != 0) {
-                ActivityCompat.requestPermissions(this.requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO), 100)
-        }
-    }
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 100) {
-            checkPermission()
+    private fun checkPermissions(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) { // 23
+            // Check if we have record
+            val sendSmsPermission = ActivityCompat.checkSelfPermission(this.requireContext(),
+                Manifest.permission.RECORD_AUDIO)
+
+            if (sendSmsPermission != PackageManager.PERMISSION_GRANTED) {
+                // If don't have permission so prompt the user.
+                this.requestPermissions(
+                    arrayOf(Manifest.permission.RECORD_AUDIO),
+                    100
+                )
+                return
+            }
         }
     }
 
