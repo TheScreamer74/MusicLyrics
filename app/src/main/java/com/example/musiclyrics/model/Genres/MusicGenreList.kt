@@ -1,4 +1,4 @@
-package com.example.musiclyrics.model.track
+package com.example.musiclyrics.model.Genres
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

@@ -1,6 +1,7 @@
 package com.example.musiclyrics.model.track
 
 import android.os.Parcelable
+import com.example.musiclyrics.model.Genres.PrimaryGenres
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 

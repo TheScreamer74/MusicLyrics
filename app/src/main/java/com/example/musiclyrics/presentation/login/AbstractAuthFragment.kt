@@ -1,17 +1,13 @@
 package com.example.musiclyrics.presentation.login
 
 import android.app.Activity.RESULT_OK
-import android.os.Bundle
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.musiclyrics.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.firebase.ui.auth.util.ExtraConstants
-import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
+import org.koin.android.ext.koin.androidContext
 
 abstract class AbstractAuthFragment : Fragment() {
 
