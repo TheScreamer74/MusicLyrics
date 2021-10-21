@@ -1,4 +1,4 @@
-package com.example.musiclyrics.network.properties.result
+package com.example.musiclyrics.model.result
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

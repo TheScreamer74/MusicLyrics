@@ -11,8 +11,8 @@ import com.acrcloud.rec.IACRCloudListener
 import com.example.musiclyrics.API_KEY
 import com.example.musiclyrics.network.MusicXMatch
 import com.example.musiclyrics.network.MusicXMatchListener
-import com.example.musiclyrics.network.properties.search.track.Track
-import com.example.musiclyrics.network.properties.search.track.TrackList
+import com.example.musiclyrics.model.track.Track
+import com.example.musiclyrics.model.track.TrackList
 import com.firebase.ui.auth.AuthUI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

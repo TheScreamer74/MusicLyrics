@@ -1,4 +1,4 @@
-package com.example.musiclyrics.network.properties.acrcloud
+package com.example.musiclyrics.model.acrcloud
 
 data class ArcRetrieve(
     val metadata: Metadata

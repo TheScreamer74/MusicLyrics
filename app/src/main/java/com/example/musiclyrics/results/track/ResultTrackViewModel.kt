@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.musiclyrics.API_KEY
 import com.example.musiclyrics.network.MusicXMatch
-import com.example.musiclyrics.network.properties.lyrics.Lyrics
-import com.example.musiclyrics.network.properties.result.Album
-import com.example.musiclyrics.network.properties.search.track.Track
+import com.example.musiclyrics.model.lyrics.Lyrics
+import com.example.musiclyrics.model.result.Album
+import com.example.musiclyrics.model.track.Track
 import kotlinx.coroutines.launch
 
 class ResultTrackViewModel(track: Track) : ViewModel() {

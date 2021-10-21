@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import com.example.musiclyrics.network.properties.search.track.TrackList
+import com.example.musiclyrics.model.track.TrackList
 import com.example.musiclyrics.search.track.SearchTrackAdapter
 
 

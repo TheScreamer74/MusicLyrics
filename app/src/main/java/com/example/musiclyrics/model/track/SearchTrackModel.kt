@@ -1,4 +1,4 @@
-package com.example.musiclyrics.network.properties.search.track
+package com.example.musiclyrics.model.track
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

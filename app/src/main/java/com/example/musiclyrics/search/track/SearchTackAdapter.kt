@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musiclyrics.databinding.TrackItemBinding
-import com.example.musiclyrics.network.properties.search.track.TrackList
+import com.example.musiclyrics.model.track.TrackList
 
 class SearchTrackAdapter(private val onClickListener: OnClickListener) : ListAdapter<TrackList, SearchTrackAdapter.TrackItemViewHolder>(DiffCallback) {
 

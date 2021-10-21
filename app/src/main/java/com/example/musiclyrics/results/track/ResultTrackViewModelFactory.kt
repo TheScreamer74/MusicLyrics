@@ -2,7 +2,7 @@ package com.example.musiclyrics.results.track
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.musiclyrics.network.properties.search.track.Track
+import com.example.musiclyrics.model.track.Track
 import java.lang.IllegalArgumentException
 
 class ResultTrackViewModelFactory (private val track: Track): ViewModelProvider.Factory {

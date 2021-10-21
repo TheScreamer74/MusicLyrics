@@ -1,7 +1,7 @@
 package com.example.musiclyrics.network
 
 import com.example.musiclyrics.BASE_URL_MUSICXMATCH
-import com.example.musiclyrics.network.properties.search.track.Root
+import com.example.musiclyrics.model.track.Root
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -39,14 +39,14 @@ interface MusicXMatchService {
 
     @GET("track.get")
     fun getTrack(@Query ("track_isrc") isrcTrack: String, @Query("apikey") apiKey: String):
-            Deferred<com.example.musiclyrics.network.properties.get.Root>
+            Deferred<com.example.musiclyrics.model.get.Root>
 
     @GET("album.get")
     fun getImageAlbum(@Query ("album_id") albumId: Long, @Query("apikey") apiKey: String):
-            Deferred<com.example.musiclyrics.network.properties.result.Root>
+            Deferred<com.example.musiclyrics.model.result.Root>
     @GET("track.lyrics.get")
     fun getLyrics(@Query ("track_id") trackId: Long, @Query("apikey") apiKey: String):
-            Deferred<com.example.musiclyrics.network.properties.lyrics.Root>
+            Deferred<com.example.musiclyrics.model.lyrics.Root>
 
 }
 

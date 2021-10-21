@@ -1,4 +1,4 @@
-package com.example.musiclyrics.network.properties.lyrics
+package com.example.musiclyrics.model.lyrics
 
 import com.squareup.moshi.Json
 
