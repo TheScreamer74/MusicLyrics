@@ -4,6 +4,7 @@ import android.app.Activity.RESULT_OK
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.musiclyrics.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
@@ -50,11 +51,12 @@ abstract class AbstractAuthFragment : Fragment() {
         }
     }
 
-    private fun signOut() {
+    //Watch to implements these function
+    protected fun signOut() {
         AuthUI.getInstance()
             .signOut(this.requireContext())
             .addOnCompleteListener {
-                // ...
+                findNavController().popBackStack()
             }
     }
     private fun delete() {
