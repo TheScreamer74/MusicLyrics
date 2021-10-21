@@ -12,29 +12,45 @@ sealed interface MusicXMatchApi {
         }
 
         @GET(SEARCH_TRACK_URL)
-        suspend fun getTrackNamed(@Query("q_track") queryTrack: String, @Query("apikey") apiKey:String): Response<Root>
+        suspend fun getTrackNamed(
+            @Query("q_track") queryTrack: String,
+            @Query("apikey") apiKey: String
+        ): Response<Root>
     }
+
     interface GetTrackFromISRC {
         companion object {
             const val GET_TRACK_URL = "track.get"
         }
 
         @GET(GET_TRACK_URL)
-        suspend fun getTrackWithISRC(@Query("track_isrc") isrcId: String, @Query("apikey") apiKey:String): Response<com.example.musiclyrics.model.get.Root>
+        suspend fun getTrackWithISRC(
+            @Query("track_isrc") isrcId: String,
+            @Query("apikey") apiKey: String
+        ): Response<com.example.musiclyrics.model.get.Root>
     }
+
     interface GetAlbum {
         companion object {
             const val GET_ALBUM_URL = "album.get"
         }
+
         @GET(GET_ALBUM_URL)
-        suspend fun getAlbumWithId(@Query("album_id") albumId: Long, @Query("apikey") apiKey: String): Response<com.example.musiclyrics.model.result.Root>
+        suspend fun getAlbumWithId(
+            @Query("album_id") albumId: Long,
+            @Query("apikey") apiKey: String
+        ): Response<com.example.musiclyrics.model.result.Root>
     }
+
     interface GetLyrics {
         companion object {
             const val GET_LYRICS_URL = "track.lyrics.get"
         }
 
         @GET(GET_LYRICS_URL)
-        suspend fun getLyricsWithTrackId(@Query("track_id") trackId : Long, @Query("apikey") apiKey:String): Response<com.example.musiclyrics.model.lyrics.Root>
+        suspend fun getLyricsWithTrackId(
+            @Query("track_id") trackId: Long,
+            @Query("apikey") apiKey: String
+        ): Response<com.example.musiclyrics.model.lyrics.Root>
     }
 }

@@ -23,9 +23,12 @@ import com.acrcloud.rec.IACRCloudListener
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentSearchTrackBinding
 import com.example.musiclyrics.network.MusicXMatchListener
+import org.koin.android.ext.android.inject
 import org.koin.core.component.KoinApiExtension
+import org.koin.core.parameter.parametersOf
 
 
+@KoinApiExtension
 class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
 
     companion object {
@@ -39,11 +42,10 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         }
     }
 
-    private lateinit var viewModel: SearchTrackViewModel
+    private val viewModel: SearchTrackViewModel by inject { parametersOf(this) }
 
     private lateinit var binding: FragmentSearchTrackBinding
 
-    @KoinApiExtension
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,8 +58,6 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         )
 
         checkPermissions()
-
-        viewModel = ViewModelProvider(this).get(SearchTrackViewModel::class.java)
 
         viewModel.callback = this
 
@@ -135,7 +135,6 @@ class SearchTrackFragment : Fragment(), IACRCloudListener, MusicXMatchListener {
         }
     }
 
-    @KoinApiExtension
     override fun onResult(p0: ACRCloudResult?) {
         viewModel.handleResult(p0!!.result)
     }

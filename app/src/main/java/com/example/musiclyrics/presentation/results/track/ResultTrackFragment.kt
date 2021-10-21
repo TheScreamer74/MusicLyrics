@@ -7,18 +7,22 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.musiclyrics.R
 import com.example.musiclyrics.databinding.FragmentResultTrackBinding
+import org.koin.android.ext.android.inject
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.parameter.parametersOf
 
+@KoinApiExtension
 class ResultTrackFragment : Fragment() {
 
     companion object {
         fun newInstance() = ResultTrackFragment()
     }
 
-    private lateinit var viewModel: ResultTrackViewModel
-    private lateinit var viewModelFactory: ResultTrackViewModelFactory
+    private val args: ResultTrackFragmentArgs by navArgs()
+    private val viewModel: ResultTrackViewModel by inject { parametersOf(this, args.track) }
 
     private lateinit var binding: FragmentResultTrackBinding
 
@@ -33,10 +37,6 @@ class ResultTrackFragment : Fragment() {
             false
         )
 
-
-        val args = arguments?.let { ResultTrackFragmentArgs.fromBundle(it) }
-        viewModelFactory = ResultTrackViewModelFactory(args!!.track)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ResultTrackViewModel::class.java)
 
         binding.lifecycleOwner = this
 
