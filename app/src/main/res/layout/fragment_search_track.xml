@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.musiclyrics.search.track.SearchTrackViewModel"/>
+            type="com.example.musiclyrics.presentation.search.track.SearchTrackViewModel"/>
     </data>
 
 

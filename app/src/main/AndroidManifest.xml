@@ -15,7 +15,7 @@
         android:theme="@style/Theme.MusicLyrics"
         android:fullBackupContent="true">
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

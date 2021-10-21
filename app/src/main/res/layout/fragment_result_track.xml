@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.musiclyrics.results.track.ResultTrackViewModel"/>
+            type="com.example.musiclyrics.presentation.results.track.ResultTrackViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

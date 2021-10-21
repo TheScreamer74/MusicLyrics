@@ -1,8 +1,8 @@
-package com.example.musiclyrics
+package com.example.musiclyrics.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
+import com.example.musiclyrics.R
 
 
 class MainActivity : AppCompatActivity() {

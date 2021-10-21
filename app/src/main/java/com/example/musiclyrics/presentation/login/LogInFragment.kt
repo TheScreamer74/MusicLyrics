@@ -14,8 +14,6 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 
-
-@Suppress("DEPRECATION")
 class LogIn : Fragment() {
 
     val RC_SIGN_IN = 120

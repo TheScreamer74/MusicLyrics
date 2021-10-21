@@ -1,4 +1,4 @@
-package com.example.musiclyrics.results.track
+package com.example.musiclyrics.presentation.results.track
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,4 +1,4 @@
-package com.example.musiclyrics.results.track
+package com.example.musiclyrics.presentation.results.track
 
 import android.os.Bundle
 import android.view.LayoutInflater
