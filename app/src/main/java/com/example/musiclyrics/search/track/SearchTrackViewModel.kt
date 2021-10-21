@@ -43,7 +43,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
             try {
                 var result = withContext(Dispatchers.IO) { getTrackListDeferred.await() }
                 _tracks.value =
-                    withContext(Dispatchers.Default) { result.message.body.track_list.sortedBy { it.track.trackRating } }
+                    withContext(Dispatchers.Default) { result.message.body.track_list.sortedBy { it.track.trackRating } }!!
             } catch (t: Throwable) {
                 Log.i("LocationListViewModel", t.message ?: "rien")
             }
@@ -58,7 +58,7 @@ class SearchTrackViewModel(application: Application) : AndroidViewModel(applicat
             try{
                 var result = withContext(Dispatchers.IO) { getTrackDeferred.await() }
                 _track.value =
-                    withContext(Dispatchers.Default) { result.message.body.track }
+                    withContext(Dispatchers.Default) { result.message.body.track }!!
                 callback.onEventCompleted()
             } catch (t: Throwable) {
                 callback.onEventFailed()
